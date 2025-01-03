@@ -3276,7 +3276,6 @@ HX_PhotoEditViewControllerDelegate
 @end
 
 @interface HXPhotoBottomView ()
-@property (strong, nonatomic) UIButton *previewBtn;
 @property (strong, nonatomic) UIButton *doneBtn;
 @property (strong, nonatomic) UIButton *editBtn;
 @property (strong, nonatomic) UIActivityIndicatorView *loadingView;

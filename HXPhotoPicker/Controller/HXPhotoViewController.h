@@ -148,6 +148,8 @@ HXCustomCameraController;
 @property (assign, nonatomic) BOOL doneBtnEnabled;
 @property (assign, nonatomic) NSInteger selectCount;
 @property (strong, nonatomic) UIButton *originalBtn;
+// 预览已选择的照片视频按钮
+@property (strong, nonatomic) UIButton *previewBtn;
 @property (strong, nonatomic) UIToolbar *bgView;
 - (void)requestPhotosBytes;
 @end
