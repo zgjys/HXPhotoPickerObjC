@@ -365,6 +365,10 @@ HX_PhotoEditViewControllerDelegate
                 appearance.backgroundEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
                 break;
         }
+        // fix: 导航栏背景颜色设置不生效的问题
+        if (navBarBackgroudColor) {
+            appearance.backgroundColor = navBarBackgroudColor;
+        }
         self.navigationController.navigationBar.standardAppearance = appearance;
         self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
     }
