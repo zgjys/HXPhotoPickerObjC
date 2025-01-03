@@ -151,4 +151,7 @@
 + (void)deleteNetWorkVideoFile;
 
 + (CGFloat)getStatusBarHeight;
+
+/// 获取window的安全区域
++ (UIEdgeInsets)getWindowSafeAreaInsets;
 @end

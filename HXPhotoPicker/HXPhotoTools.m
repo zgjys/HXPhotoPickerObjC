@@ -56,7 +56,7 @@ NSString *const hx_kKeyContentIdentifier = @"com.apple.quicktime.content.identif
 
 /**
  获取视频的时长
- */  
+ */
 + (NSString *)transformVideoTimeToString:(NSTimeInterval)duration {
     NSInteger time = roundf(duration);
     NSString *newTime;
@@ -351,7 +351,7 @@ NSString *const hx_kKeyContentIdentifier = @"com.apple.quicktime.content.identif
         }];
     }else {
         if (failed) {
-            failed([NSError errorWithDomain:[NSString stringWithFormat:@"该设备不支持:%@",presetName] code:-111 userInfo:nil]); 
+            failed([NSError errorWithDomain:[NSString stringWithFormat:@"该设备不支持:%@",presetName] code:-111 userInfo:nil]);
         }
     }
 }
@@ -593,7 +593,7 @@ NSString *const hx_kKeyContentIdentifier = @"com.apple.quicktime.content.identif
     }
     
     return createCollection;
-} 
+}
 + (BOOL)isIphone6 {
     struct utsname systemInfo;
     uname(&systemInfo);
@@ -640,7 +640,7 @@ NSString *const hx_kKeyContentIdentifier = @"com.apple.quicktime.content.identif
         have = YES;
     }else if ([platform isEqualToString:@"iPhone10,6"]) { // iphone7 plus
         have = YES;
-    } 
+    }
     return have;
 }
 + (BOOL)isIphone12Mini {
@@ -1124,4 +1124,34 @@ NSString *const hx_kKeyContentIdentifier = @"com.apple.quicktime.content.identif
     }
     return statusBarHeight;
 }
+
+    
++ (UIEdgeInsets)getWindowSafeAreaInsets {
+    UIWindow *keyWindow = nil;
+    for (UIWindow *window in [UIApplication sharedApplication].windows) {
+        if ([window isKeyWindow] && !window.hidden) {
+            keyWindow = window;
+            break;
+        }
+    }
+        
+    if (!keyWindow) {
+        keyWindow = [UIApplication sharedApplication].keyWindow;
+    }
+        
+    if (!keyWindow) {
+        if ([[UIApplication sharedApplication].delegate respondsToSelector:@selector(window)]) {
+            keyWindow = [[UIApplication sharedApplication].delegate window];
+        }
+    }
+     
+    if (keyWindow) {
+        if (@available(iOS 11.0, *)) {
+            return keyWindow.safeAreaInsets;
+        }
+    }
+    
+    return UIEdgeInsetsZero;
+}
+    
 @end

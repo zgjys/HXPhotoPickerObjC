@@ -11,6 +11,7 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import "NSBundle+HXPhotoPicker.h"
+#import "HXPhotoTools.h"
 
 /// 当前版本
 #define HXVersion @"3.3.2"
@@ -112,7 +113,12 @@
 
 #define HX_Is_iPhone14Pro ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1179, 2556), [[UIScreen mainScreen] currentMode].size) && !HX_UI_IS_IPAD : NO)
 
+/*
 #define HX_IS_IPhoneX_All (HX_Is_iPhoneX || HX_Is_iPhoneXR || HX_Is_iPhoneXS || HX_Is_iPhoneXS_MAX || HX_IS_IPHONEX || HX_Is_iPhoneTwelveMini || HX_Is_iPhoneTwelvePro || HX_Is_iPhoneTwelveProMax || HX_Is_iPhone14Pro || HX_Is_iPhone14ProMax)
+*/
+
+// 通过安全区域判断是否是刘海屏
+#define HX_IS_IPhoneX_All ([HXPhotoTools getWindowSafeAreaInsets].bottom > 0)
 
 // 导航栏 + 状态栏 的高度
 #define hxNavigationBarHeight ((HX_UI_IS_IPAD ? 50 : 44) + HXStatusBarHeight)
